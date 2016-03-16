@@ -1,0 +1,15 @@
+<h1>Your friendlist</h1>
+<ul>
+  <% @user.friendships.each do |friendship| %>
+    <li><%= friendship.friend.username %>
+       (<%= link_to "Remove friend", friendship, method: :delete %>)
+    </li>
+  <% end %>
+</ul>
+
+<h2>Friended by Users</h2>
+<ul>
+  <% @user.inverse_friends.each do |user| %>
+    <%= user.username %>
+  <% end %>
+</ul>
