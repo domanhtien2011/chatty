@@ -12,8 +12,9 @@ class User < ActiveRecord::Base
   validate :validate_username
 
   def validate_username
-  if User.where(email: username).exists?
-    errors.add(:username, :invalid)
+    if User.where(email: username).exists?
+      errors.add(:username, :invalid)
+    end
   end
-end
+
 end
