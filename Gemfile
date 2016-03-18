@@ -57,6 +57,6 @@ gem 'simple_form'
 gem 'unobtrusive_flash', '>=3'
 
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 0.15'
   gem 'rails_12factor'
 end
