@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   before_action :check_recipient, only: [:show]
-  before_action :authenticate_user!
+  before_action :require_login
   after_action :check_read, only: [:show]
 
   def index

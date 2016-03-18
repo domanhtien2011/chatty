@@ -2,17 +2,32 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   helper_method :check_read
+  helper_method :current_user, :user_signed_in?
   protect_from_forgery with: :exception
   after_filter :prepare_unobtrusive_flash
-  before_action :configure_permitted_parameters, if: :devise_controller?
 
-  protected
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me) }
-    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :username, :email, :password, :remember_me) }
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password) }
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
+
+  def user_signed_in?
+    !!current_user
+  end
+
+  def require_login
+    if !user_signed_in?
+      flash[:danger] = 'You must be logged in to see this page'
+      redirect_to login_path
+    end
+  end
+
+  def skip_if_logged_in
+    if user_signed_in?
+      flash[:warning] = "You already signed in"
+      redirect_to users_path
+    end
+  end
+
 
   def check_recipient
     if user_signed_in?

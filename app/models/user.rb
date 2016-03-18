@@ -1,21 +1,13 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable
-  validates :username,
-    :presence => true,
-  :uniqueness => {
-    :case_sensitive => false
-  }
+  before_save { self.email = email.downcase }
+  validates :username, presence: true, length: { mininum: 3, maximum: 25 }, uniqueness: { case_sensitive: false }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true,
+    length: { maximum: 105 },
+    uniqueness: { case_sensitive: false },
+    format: { with: VALID_EMAIL_REGEX }
 
-  validate :validate_username
-
-  def validate_username
-    if User.where(email: username).exists?
-      errors.add(:username, :invalid)
-    end
-  end
+  has_secure_password
 
   has_many :friendships, dependent: :destroy
   has_many :friends, :through => :friendships, dependent: :destroy
@@ -29,4 +21,5 @@ class User < ActiveRecord::Base
   def to_s
     username
   end
+
 end

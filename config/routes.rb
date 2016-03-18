@@ -1,14 +1,20 @@
 Rails.application.routes.draw do
   resources :friendships
   resources :messages
+  resources :users, except: [:new]
   get 'welcome/index'
   get 'sent_messages', to: 'messages#sent_messages'
   get '/inbox', to: 'messages#inbox'
 
-  devise_for :users
   root 'welcome#index'
   get 'welcome/addfriend', to: 'welcome#addfriend'
   get 'welcome/profile', to: 'welcome#profile'
+
+   get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+
+  get 'signup', to: 'users#new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

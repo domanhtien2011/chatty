@@ -1,0 +1,15 @@
+<h1 class="text-sm-center">Login</h1>
+<%= form_for(:session, :html => { url: login_path }) do |f| %>
+<div class="form-group">
+  <%= f.text_field 'email', class: 'form-control', placeholder: 'Your E-mail' %>
+</div>
+
+<div class="form-group">
+  <div class="half-width">
+    <%= f.password_field 'password', class: 'form-control', placeholder: 'Password', autocomplete: 'off' %>
+  </div>
+</div>
+<div class="form-group">
+  <%= f.submit 'Login', class: 'btn btn-block btn-info' %>
+</div>
+<% end %>
