@@ -55,3 +55,8 @@ gem 'normalize-rails'
 gem "font-awesome-rails"
 gem 'simple_form'
 gem 'unobtrusive_flash', '>=3'
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
