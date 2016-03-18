@@ -14,5 +14,10 @@
 //= require jquery_ujs
 //= require tether
 //= require bootstrap
+//= require unobtrusive_flash
+//= require unobtrusive_flash_bootstrap
 //= require turbolinks
 //= require_tree .
+
+
+UnobtrusiveFlash.flashOptions['timeout'] = 3000; // milliseconds

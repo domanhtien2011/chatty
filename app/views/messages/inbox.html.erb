@@ -1,0 +1,9 @@
+<% @received_messages.each do |received_message| %>
+      <h4>From: <%= received_message.sender.username %></h4>
+      <% if received_message.read == true %>
+        <p><strong>Status: Read</strong></p>
+      <% else %>
+        <p><%= link_to received_message.body, received_message %></p>
+      <hr>
+      <% end %>
+<% end %>

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :friendships
+  resources :messages
   get 'welcome/index'
+  get 'sent_messages', to: 'messages#sent_messages'
+  get '/inbox', to: 'messages#inbox'
 
   devise_for :users
   root 'welcome#index'

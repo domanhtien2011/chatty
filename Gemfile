@@ -54,3 +54,4 @@ end
 gem 'normalize-rails'
 gem "font-awesome-rails"
 gem 'simple_form'
+gem 'unobtrusive_flash', '>=3'
