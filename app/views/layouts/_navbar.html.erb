@@ -9,7 +9,7 @@
       <%= link_to "Log out", logout_path, method: :delete, class: 'nav-link' %>
     </li>
     <li class="nav-item">
-      <%= link_to "Your Profile", welcome_profile_path,class: 'nav-link' %>
+      <%= link_to "Your Dashboard", welcome_profile_path,class: 'nav-link' %>
     </li>
     <li class="nav-item">
       <%= link_to "Add Friend", welcome_addfriend_path,class: 'nav-link' %>
@@ -24,8 +24,14 @@
     <% end %>
   </ul>
   <% if user_signed_in? %>
-  <p class="nav navbar-text pull-sm-right">
-    <%= current_user.username %>
-  </p>
+    <span class="nav navbar-text pull-sm-right">
+
+      <% if current_user.image_url? %>
+        <%= image_tag(current_user.image_url.url, class: "img-circle profile-image") %>
+      <% end %>
+      <%= current_user.username %>
+    </span>
+
   <% end %>
+
 </nav>

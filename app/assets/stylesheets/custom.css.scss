@@ -1,35 +1,45 @@
 @import 'bootstrap';
-@import "font-awesome";
-
-.navbar {
+@import 'font-awesome';
+.navbar
+{
     margin-bottom: 20px;
 }
-
 /*flash*/
-.alert-error {
-    background-color: #f2dede;
-    border-color: #eed3d7;
+.alert-error
+{
+    text-align: left;
+
     color: #b94a48;
-    text-align: left;
- }
-
-.alert-alert {
-    background-color: #f2dede;
     border-color: #eed3d7;
+    background-color: #f2dede;
+}
+.alert-alert
+{
+    text-align: left;
+
     color: #b94a48;
+    border-color: #eed3d7;
+    background-color: #f2dede;
+}
+.alert-success
+{
     text-align: left;
- }
 
-.alert-success {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
     color: #468847;
+    border-color: #d6e9c6;
+    background-color: #dff0d8;
+}
+.alert-notice
+{
     text-align: left;
- }
 
-.alert-notice {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
     color: #468847;
-    text-align: left;
- }
+    border-color: #d6e9c6;
+    background-color: #dff0d8;
+}
+
+.profile-image
+{
+    width: 15px;
+    height: 15px;
+}

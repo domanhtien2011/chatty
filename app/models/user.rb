@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   has_many :sent_messages, class_name: 'Message', :foreign_key => "sender_id", dependent: :destroy
   has_many :received_messages, class_name: 'Message',:foreign_key => "recipient_id", dependent: :destroy
 
+  mount_uploader :image_url, ImageUploader
+
   def to_s
     username
   end

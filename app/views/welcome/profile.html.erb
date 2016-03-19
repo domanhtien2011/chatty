@@ -1,5 +1,8 @@
 <h1>Your friendlist</h1>
-<%= link_to "Inbox", inbox_path %>
+<%= link_to "Profile", user_path(current_user) %>
+<%= link_to inbox_path do %>
+  New Messages(<%= @received_messages.count %>)
+<% end %>
 
 <%= link_to "Sent Messages", sent_messages_path %>
 <%= link_to "New Message", new_message_path %>

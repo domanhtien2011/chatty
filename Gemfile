@@ -58,3 +58,4 @@ group :production do
   gem 'rails_12factor'
 end
 gem "letter_opener", :group => :development
+gem 'carrierwave'
