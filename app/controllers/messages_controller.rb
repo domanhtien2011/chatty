@@ -20,7 +20,6 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
     @message.update_columns(read_at: Time.now)
     read_once(@message)
-    message_url = url_for :controller => 'messages', :action => 'show', :id => message.id, :email => false, :host => 'https://pure-gorge-59227.herokuapp.com/', :only_path => false
     ReadMailer.read_notification(@message).deliver
   end
 
