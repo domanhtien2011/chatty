@@ -7,7 +7,7 @@ class MessageMailer < ApplicationMailer
   #
   def notification(message)
     @message = message
-    message_url = url_for :controller => 'messages', :action => 'show', :id => message.id, :email => false
+
     mail to: message.recipient.email, subject: "You've just got a new message"
   end
 end
