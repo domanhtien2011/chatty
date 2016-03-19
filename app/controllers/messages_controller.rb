@@ -22,7 +22,7 @@ class MessagesController < ApplicationController
     read_once(@message)
     if @message.sent == nil
       ReadMailer.read_notification(@message).deliver
-      @message.sent = true
+       @message.update_columns(read_at: true)
     end
 
   end
