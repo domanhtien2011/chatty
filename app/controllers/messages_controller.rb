@@ -8,18 +8,19 @@ class MessagesController < ApplicationController
 
   def inbox
     @messages = Message.all
-    @received_messages = Message.where(recipient_id: current_user.id)
+    @received_messages = Message.where(recipient_id: current_user.id).order('created_at DESC')
   end
 
   def sent_messages
     @messages = Message.all
-    @sent_messages = Message.where(sender_id: current_user.id)
+    @sent_messages = Message.where(sender_id: current_user.id).order('created_at DESC')
   end
 
   def show
     @message = Message.find(params[:id])
     @message.update_columns(read_at: Time.now)
     read_once(@message)
+    ReadMailer.read_notification(@message).deliver
   end
 
   def new
@@ -34,6 +35,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.sender_id = current_user.id
     if @message.save
+      MessageMailer.notification(@message).deliver
       flash[:success] = 'Message sent successfully'
       redirect_to welcome_profile_path
     else

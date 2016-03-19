@@ -57,3 +57,4 @@ group :production do
   gem 'pg', '~> 0.15'
   gem 'rails_12factor'
 end
+gem "letter_opener", :group => :development
