@@ -20,7 +20,11 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
     @message.update_columns(read_at: Time.now)
     read_once(@message)
-    ReadMailer.read_notification(@message).deliver
+    if @message.sent == nil
+      ReadMailer.read_notification(@message).deliver
+      @message.sent = true
+    end
+
   end
 
   def new

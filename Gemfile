@@ -59,3 +59,4 @@ group :production do
 end
 gem "letter_opener", :group => :development
 gem 'carrierwave'
+gem 'kaminari'
