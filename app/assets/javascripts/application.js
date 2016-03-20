@@ -16,6 +16,7 @@
 //= require bootstrap
 //= require unobtrusive_flash
 //= require unobtrusive_flash_bootstrap
+//= require jquery.infinite-pages
 //= require turbolinks
 //= require_tree .
 

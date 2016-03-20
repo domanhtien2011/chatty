@@ -1,0 +1,10 @@
+// Append new data
+$("<%=j render(:partial => 'sent_messages') %>")
+  .appendTo($(".infinite-sent-messages"));
+
+<% if @sent_messages.last_page? %>
+  $('.pagination').html("No more sent messages");
+<% else %>
+  $('.pagination')
+    .html("<%=j link_to_next_page(@sent_messages, 'Next Page', :remote => true) %>");
+<% end %>

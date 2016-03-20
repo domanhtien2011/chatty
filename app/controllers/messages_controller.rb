@@ -8,18 +8,19 @@ class MessagesController < ApplicationController
 
   def inbox
     @messages = Message.all
-    @received_messages = Message.where(recipient_id: current_user.id).order('created_at DESC')
+    @received_messages = Message.where(recipient_id: current_user.id).order('created_at DESC').page(params[:page]).per(5)
   end
 
   def sent_messages
     @messages = Message.all
-    @sent_messages = Message.where(sender_id: current_user.id).order('created_at DESC')
+    @sent_messages = Message.where(sender_id: current_user.id).order('created_at DESC').page(params[:page]).per(4)
   end
 
   def show
     @message = Message.find(params[:id])
     @message.update_columns(read_at: Time.now)
     read_once(@message)
+    # just send one notification to the sender
     if @message.sent == nil
       ReadMailer.read_notification(@message).deliver
        @message.update_columns(sent: true)

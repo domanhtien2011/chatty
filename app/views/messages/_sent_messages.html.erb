@@ -1,0 +1,9 @@
+<% @sent_messages.each do |sent_message| %>
+  <p><strong>To: <%= sent_message.recipient.username %></strong></p>
+  <% if sent_message.read == true %>
+     <p>Read at: <%= sent_message.read_at.strftime("%H:%I %p, %d/%m/%Y") %></p>
+  <% else %>
+    <strong>Not read yet!</strong>
+  <% end %>
+  <hr>
+<% end %>
