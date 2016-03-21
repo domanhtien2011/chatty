@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
 
   def sent_messages
     @messages = Message.all
-    @sent_messages = Message.where(sender_id: current_user.id).order('created_at DESC').page(params[:page]).per(4)
+    @sent_messages = Message.where(sender_id: current_user.id).order('read_at DESC').page(params[:page]).per(4)
   end
 
   def show
