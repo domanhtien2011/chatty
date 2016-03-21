@@ -8,41 +8,23 @@ The following **required** functionality is complete:
 * [x] User can sign up by providing their email, password, and name.
 * [x] User can login using an email and password.
 * [x] After logging in, the user is taken to a page that has a list of incoming messages, sorted in descending chronological order (newest messages at top), a "new message" link, an "add friends" link, and a "sent messages" link.
-* [x] The User can navigate to a menu page with four sections:
-    1. Breakfast
-    2. Lunch
-    3. Dinner
-    4. Drinks
-* [x] The user should see at least 5 food items in each section.
-* [x] Each food item should have the following fields:
-    1. Name
-    2. Description
-    3. Price
-    4. Section
-    5. imageUrl
-* [x] The User should be able to filter by section of Breakfast, Lunch, Dinner, or Drinks and see only the relevant items.
-* [x] The User can sort menu items by “alphabetical”, “price low to high”, and “price high to low”.
+* [x] Clicking the "add friends" link takes the user to a page with all users listed, with a link to "add user to friends list".
+* [x] Clicking on "new message" takes the user to a page where they can write a new mesasge. The recipient field should be a dropdown, where the options are names from the user's friends.
+* [x] Clicking on "sent messages" takes the user to a page listing messages they have sent. Each message should display at what time it was read by the recipient, or "unread". The user cannot read the contents of the messages.
+* [x] User can read a message's content only once. Once the message has been read, the user will see a page indicating the message has already been read.
+* [x] User can only read messages where they are the recipient.
 * [x] The User should be able to get for a menu item and see results.
-* [x] licking on an item in the menu brings up its detail, where you see the description and a larger picture.
-* [x] The User can click “order” on a menu item to go to a “Create Order” page.
-* [x] The User is able to fill in their name, phone number, and address.
-* [x] The User is taken to a “Thank you for your order page” that lists the name of item, the total cost (delivery should cost 20,000 VND), the user’s name, the user’s address, and the time the order was created in human-readable format (for example, Tuesday, December 1, 15:25).
-
-The following **optional** features are implemented:
-* [x] The User can also filter by type of Cuisine.
-* [x] The User can see how many times each menu item has been viewed, and sort items by “most viewed”.
-* [x] The User can leave a review (1-5 stars) for each dish, along with a text review.
-* [x] The User can see reviews and an average review score.
-* [x] The user can input “CODERSCHOOL” as a coupon code on the order page, which should give a 50% discount off of the order.
-* [x] The User receives an email upon placing an order.
-
-The following **additional** features are implemented:
-* [x] Share information about the food with their friend by using their social network accounts
+* [x] User can attach an image: https://github.com/carrierwaveuploader/carrierwave.
+* [x] User can log in with Facebook.
+* [x] Implement Infinite Scroll.
+* [x] User gets an email when they receive a message, with a link to view the message.
+* [x] User gets an email when a message they have sent is read with the time at which the message was read.
+* [x] User can remove friends from their friends list.
 
 ## Notes
 My challenges when building the app are:
-* Learning about cart, background-image, ruby string.
-* I have to use 24-extension help, but I think it is worth it.
+* Learning about model relationships.
+* Simple_form
 
 ## Video Walkthrough
 
