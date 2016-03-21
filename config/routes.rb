@@ -8,9 +8,10 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   get 'welcome/addfriend', to: 'welcome#addfriend'
-  get 'welcome/profile', to: 'welcome#profile'
+  get 'welcome/dashboard', to: 'welcome#profile'
 
-   get 'login', to: 'sessions#new'
+  get 'auth/:provider/callback' => 'sessions#callback'
+  get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 

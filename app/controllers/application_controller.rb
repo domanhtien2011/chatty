@@ -48,8 +48,15 @@ class ApplicationController < ActionController::Base
 
   def read_once(message)
     if current_user.id == message.recipient_id && message.read == true
-      redirect_to welcome_profile_url
+      redirect_to welcome_dashboard_url
       flash[:danger] = 'You could read this message only once!'
+    end
+  end
+
+  def skip_if_logged_in
+    if user_signed_in?
+      flash[:warning] = "You already signed in"
+      redirect_to welcome_dashboard_path
     end
   end
 end

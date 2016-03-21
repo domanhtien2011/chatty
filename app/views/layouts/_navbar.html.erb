@@ -1,37 +1,57 @@
-<nav class="navbar navbar-light bg-faded">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <ul class="nav navbar-nav">
-    <li class="nav-item">
-      <%= link_to "Home", root_path, class: 'nav-link' %>
-    </li>
-    <% if user_signed_in? %>
-    <li class="nav-item">
-      <%= link_to "Log out", logout_path, method: :delete, class: 'nav-link' %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "Your Dashboard", welcome_profile_path,class: 'nav-link' %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "Add Friend", welcome_addfriend_path,class: 'nav-link' %>
-    </li>
-    <% else %>
-    <li class="nav-item">
-      <%= link_to "Signup", signup_path,class: 'nav-link' %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "Login", login_path,class: 'nav-link' %>
-    </li>
-    <% end %>
-  </ul>
-  <% if user_signed_in? %>
-    <span class="nav navbar-text pull-sm-right">
-
-      <% if current_user.image_url? %>
-        <%= image_tag(current_user.image_url.url, class: "img-circle profile-image") %>
+<nav class="navbar navbar-full navbar-dark bg-inverse">
+  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+  &#9776;
+  </button>
+  <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+    <%= link_to "Chatty", root_path, class: "navbar-brand" %>
+    <ul class="nav navbar-nav">
+      <li class="nav-item">
+        <%= link_to "Home", root_path, class: 'nav-link' %>
+      </li>
+      <% if user_signed_in? %>
+      <li class="nav-item">
+        <%= link_to "Log out", logout_path, method: :delete, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Friendlist", welcome_dashboard_path,class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Add Friend", welcome_addfriend_path,class: 'nav-link' %>
+      </li>
+      <% else %>
+      <li class="nav-item">
+        <%= link_to "Signup", signup_path,class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Login", login_path,class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Facebook Login", "/auth/facebook",class: 'nav-link' %>
+      </li>
       <% end %>
+      <li class="dropdown nav-item">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Messages
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><%= link_to "New Messages", inbox_path %>
+          </li>
+          <li><%= link_to "Sent Messages", sent_messages_path %></li>
+          <li><%= link_to "Send New Message", new_message_path %></li>
+          <li role="separator" class="divider"></li>
+        </ul>
+      </li>
+    </ul>
+    <% if user_signed_in? %>
+    <span class="nav navbar-text pull-sm-right">
+      <% if current_user.image_url? %>
+      <%= image_tag(current_user.image_url.url, class: "img-circle profile-image") %>
+      <%= link_to edit_user_path(current_user) do %>
       <%= current_user.username %>
+      <% end %>
+      <% end %>
     </span>
-
-  <% end %>
-
+    <% end %>
+  </div>
 </nav>

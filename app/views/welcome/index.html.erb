@@ -1,2 +1,23 @@
-<h1>Welcome</h1>
+<h1 class="text-sm-center">Welcome to Chatty</h1>
+<% if user_signed_in? %>
+<div class="jumbotron">
+  <h1 class="display-3">Let's get started</h1>
+  <p class="lead">First of all, you need to add some friends first. Don't worry, you don't have to ask for their permission. Our users are pretty friendly, huh? ^^</p>
+  <p>Then, you can start using our amazing message functionality by navigating to the dropdown message on your navbar. Pretty straightforward right?</p>
+  <p class="lead">
+    <%= link_to "Add Friend", welcome_addfriend_path, class: "btn btn-primary btn-lg center-block" %>
+  </p>
 
+</div>
+<% else %>
+<div class="jumbotron">
+  <h1 class="display-3">An Amazing Chat Application</h1>
+  <p class="lead">This is a wonderful chat application. Please signup below to experience it. However, you still can enjoy our amazing application by using your facebook account. We understand you like your mom, huh?</p>
+  <p class="lead">
+    <%= link_to "Signup", signup_path, class: "btn btn-primary btn-lg center-block" %>
+  </p>
+  <p>
+    <%= link_to "Facebook Login", "/auth/facebook", class: " btn btn-primary btn-lg center-block" %>
+  </p>
+</div>
+<% end %>

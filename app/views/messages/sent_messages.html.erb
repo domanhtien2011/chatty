@@ -1,5 +1,6 @@
+
 <div class="infinite-sent-messages">
-  <h1>Sent Messages</h1>
+  <h1 class="text-sm-center">Sent Messages</h1>
   <%= render 'sent_messages' %>
   <p class="pagination">
     <%= link_to_next_page(@sent_messages, 'Next Page', :remote => true) %>

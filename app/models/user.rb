@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships,  :class_name => "Friendship", :foreign_key => "friend_id" , dependent: :destroy
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user, dependent: :destroy
 
-  # has_many :messages, dependent: :destroy
   has_many :sent_messages, class_name: 'Message', :foreign_key => "sender_id", dependent: :destroy
   has_many :received_messages, class_name: 'Message',:foreign_key => "recipient_id", dependent: :destroy
 
@@ -24,4 +23,13 @@ class User < ActiveRecord::Base
     username
   end
 
+  def self.from_omniauth(auth)
+    email = auth[:info][:email] || "#{auth[:uid]}@facebook.com"
+    user = where(email: email).first_or_initialize
+    user.username = auth.info.name
+    user.email = auth.info.email
+    user.password = SecureRandom.urlsafe_base64(n=10)
+    user.remote_image_url_url =  auth.info.image.gsub('http://','https://')
+    user.save! && user
+  end
 end

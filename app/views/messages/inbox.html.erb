@@ -1,4 +1,6 @@
+
 <div class="infinite-messages">
+<h1 class="text-sm-center">New Messages</h1>
   <%= render 'received_messages' %>
   <p class="pagination">
     <%= link_to_next_page(@received_messages, 'Next Page', :remote => true) %>

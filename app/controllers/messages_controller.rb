@@ -42,7 +42,7 @@ class MessagesController < ApplicationController
     if @message.save
       MessageMailer.notification(@message).deliver
       flash[:success] = 'Message sent successfully'
-      redirect_to welcome_profile_path
+      redirect_to welcome_dashboard_path
     else
       render 'new'
     end

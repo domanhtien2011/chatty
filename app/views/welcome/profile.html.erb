@@ -1,22 +1,38 @@
-<h1>Your friendlist</h1>
-<%= link_to "Profile", user_path(current_user) %>
-<%= link_to inbox_path do %>
-  New Messages(<%= @received_messages.count %>)
-<% end %>
-
-<%= link_to "Sent Messages", sent_messages_path %>
-<%= link_to "New Message", new_message_path %>
-<ul>
+<h1 class="text-sm-center">Your Friendlist</h1>
+<table class="table table-inverse">
+  <thead>
+    <tr>
+      <th>Friend's Name</th>
+      <th>Email</th>
+      <th>Action</th>
+    </tr>
+  </thead>
   <% @user.friendships.each do |friendship| %>
-    <li><%= friendship.friend.username %>
-       (<%= link_to "Remove friend", friendship, method: :delete %>)
-    </li>
+  <tbody>
+    <tr>
+      <td><%= friendship.friend.username %></td>
+      <th><%= friendship.friend.email %></th>
+       <td><%= link_to "Remove friend", friendship, method: :delete %> </td>
+    </tr>
   <% end %>
-</ul>
+  </tbody>
+  </table>
 
-<h2>Friended by Users</h2>
-<ul>
+<h2>Congratulations, these people also add you as their friends!!!</h2>
+<table class="table table-inverse">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      </tr>
+  </thead>
   <% @user.inverse_friends.each do |user| %>
-    <%= user.username %>
+    <tbody>
+    <tr>
+    <th><%= user.username %></th>
+    <th><%= user.email %></th>
+    </tr>
+  </tbody>
+
   <% end %>
-</ul>
+</table>

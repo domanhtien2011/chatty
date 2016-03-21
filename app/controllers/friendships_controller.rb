@@ -4,18 +4,22 @@ class FriendshipsController < ApplicationController
     @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
       if @friendship.save
         flash[:success] = 'Successfully added friend'
-        redirect_to welcome_profile_path
+        redirect_to welcome_dashboard_path
       else
         flash[:error] = "Unable to add friend"
         redirect_to root_path
       end
   end
 
+  def block
+
+  end
+
   def destroy
     @friendship = current_user.friendships.find(params[:id])
     @friendship.destroy
     flash[:success] = 'Successfully removed friendship'
-    redirect_to welcome_profile_path
+    redirect_to welcome_dashboard_path
   end
 
   private

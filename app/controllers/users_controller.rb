@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  before_action :require_login,only: [:show, :edit, :update]
+  before_action :skip_if_logged_in, only: [:new]
+
   def show
     @user = User.find(params[:id])
   end

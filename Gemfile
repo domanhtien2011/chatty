@@ -1,3 +1,4 @@
+gem 'dotenv-rails', :groups => [:development, :test]
 source 'https://rubygems.org'
 
 
@@ -61,3 +62,5 @@ gem "letter_opener", :group => :development
 gem 'carrierwave'
 gem 'kaminari'
 gem 'jquery-infinite-pages'
+gem 'omniauth-facebook'
+gem 'omniauth'
